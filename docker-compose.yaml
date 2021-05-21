@@ -1,0 +1,17 @@
+version: '3.4'
+
+services:
+  server:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    networks:
+      - external
+    environment:
+      - PORTS=8080
+    ports:
+      - "8080:8080"
+
+networks:
+    external:
+      driver: bridge
