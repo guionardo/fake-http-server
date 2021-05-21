@@ -27,3 +27,5 @@ jobs:
           tags: |
             docker.pkg.github.com/${{ github.repository }}/fake-http-server:${{ github.sha }}
             docker.pkg.github.com/${{ github.repository }}/fake-http-server:${{ steps.get_version.outputs.version }}
+            docker.pkg.github.com/${{ github.repository }}/fake-http-server:latest
+            
