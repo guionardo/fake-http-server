@@ -18,10 +18,12 @@ jobs:
           registry: docker.pkg.github.com
           username: ${{ github.actor }}
           password: ${{ secrets.GITHUB_TOKEN }}
+      - id: get_version
+        uses: battila7/get-version-action@v2
       - name: Build container image
         uses: docker/build-push-action@v2
         with:
           push: true
           tags: |
             docker.pkg.github.com/${{ github.repository }}/fake-http-server:${{ github.sha }}
-            docker.pkg.github.com/${{ github.repository }}/fake-http-server:${{ github.ref }}
+            docker.pkg.github.com/${{ github.repository }}/fake-http-server:${{ steps.get_version.outputs.version }}
